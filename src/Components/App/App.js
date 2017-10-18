@@ -6,6 +6,27 @@ import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {searchResults: [
+      {
+        name:'',
+        artist:'',
+        album:''
+      },
+      {
+        name:'',
+        artist:'',
+        album:''
+      },
+      {
+        name:'',
+        artist:'',
+        album:''
+      }
+  ]}
+
+  })
   render() {
     return (
       <div>
