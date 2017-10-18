@@ -20,8 +20,9 @@ class Track extends Component {
     return (
       <div className="Track">
         <div className="Track-information">
-          <h3>Track name</h3>
-          <p>Artist or Album</p>
+          <h3>{this.props.track.name}</h3>
+          <p>{this.props.track.artist}</p>
+          <p>{this.props.track.album}</p>
         </div>
         <a className="Track-action">+ or minus</a>
       </div>
