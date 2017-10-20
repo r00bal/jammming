@@ -8,25 +8,27 @@ import SearchResults from '../SearchResults/SearchResults';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {searchResults: [
-      {
-        name:'',
-        artist:'',
-        album:''
-      },
-      {
-        name:'',
-        artist:'',
-        album:''
-      },
-      {
-        name:'',
-        artist:'',
-        album:''
-      }
-  ]}
+    this.state = {
+      searchResults: [
+        {
+          name:'mezzanie',
+          artist:'Massive Attack',
+          album:'mezzanie'
+        },
+        {
+          name:'50cent',
+          artist:'50cent',
+          album:'50cent'
+        },
+        {
+          name:'fatboyslim',
+          artist:'20syl',
+          album:'flume'
+        }
+      ]
+    };
+  }
 
-  })
   render() {
     return (
       <div>
