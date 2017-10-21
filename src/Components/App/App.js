@@ -11,16 +11,19 @@ class App extends Component {
     this.state = {
       searchResults: [
         {
+          id:'track1',
           name:'mezzanie',
           artist:'Massive Attack',
           album:'mezzanie'
         },
         {
+          id:'track2',
           name:'50cent',
           artist:'50cent',
           album:'50cent'
         },
         {
+          id:'track3',
           name:'fatboyslim',
           artist:'20syl',
           album:'flume'
