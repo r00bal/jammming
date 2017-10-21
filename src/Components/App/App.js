@@ -53,6 +53,17 @@ class App extends Component {
     };
   }
 
+  addTrack(track) {
+    const actualPlaylistTracks = this.state.playlistTracks;
+    const statment = actualPlaylistTracks.some(trackIsOnThePlaylist => track.id === trackIsOnThePlaylist.id);
+    if (!statment) {
+      actualPlaylistTracks.push(track);
+      this.setState({actualPlaylistTracks})
+    } else {
+      console.log('already in the playlist')
+    }
+  }
+
   render() {
     return (
       <div>
