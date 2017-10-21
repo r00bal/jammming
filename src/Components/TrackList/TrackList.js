@@ -5,9 +5,16 @@ import Track from '../Track/Track'
 
 //<!-- inside TrackList You will add a map method that renders a set of Track components  -->
 class TrackList extends Component {
+
   render() {
+    const tracks = this.props.tracks;
     return (
       <div className="TrackList">
+        {
+          this.props.tracks && this.props.tracks.map((track, i) => {
+            return <Track key={'id'+i} track={track} />;
+          })
+        }
 
       </div>
     );
