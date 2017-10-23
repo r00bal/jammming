@@ -11,6 +11,10 @@ import './Track.css';
   */
 
 class Track extends Component {
+  constructor(props) {
+    super(props);
+    this.addTrack = this.addTrack.bind(this);
+  }
 
   addTrack(this.props.track) {
     this.props.onAdd(this.props.track);
