@@ -16,7 +16,7 @@ class Track extends Component {
     this.addTrack = this.addTrack.bind(this);
   }
 
-  addTrack(this.props.track) {
+  addTrack() {
     this.props.onAdd(this.props.track);
   }
 
@@ -33,7 +33,7 @@ class Track extends Component {
           <h3>{this.props.track.name}</h3>
           <p>{this.props.track.artist} | {this.props.track.album}</p>
         </div>
-        <a className="Track-action">+</a>
+        <a className="Track-action" onClick={this.addTrack}>+</a>
       </div>
     );
   }
