@@ -65,7 +65,7 @@ class App extends Component {
           <SearchBar />
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} isRemoval={true}/>
-            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} isRemoval={false}/>
+            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} isRemoval={false}/>
           </div>
         </div>
       </div>
