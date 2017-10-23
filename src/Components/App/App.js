@@ -51,6 +51,7 @@ class App extends Component {
         }
       ]
     };
+    this.addTrack = this.addTrack.bind(this);
   }
 
   addTrack(track) {
@@ -58,7 +59,7 @@ class App extends Component {
     const statment = actualPlaylistTracks.some(trackIsOnThePlaylist => track.id === trackIsOnThePlaylist.id);
     if (!statment) {
       actualPlaylistTracks.push(track);
-      this.setState({actualPlaylistTracks})
+      this.setState({playlistTracks : actualPlaylistTracks})
     } else {
       console.log('already in the playlist')
     }
@@ -71,8 +72,9 @@ class App extends Component {
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults}/>
-            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}/>
+            <SearchResults searchResults={this.state.searchResults} onAdd={addTrack}/>
+            <Playlist playlistName={this.state.playlistName} playlistTracks={t
+              his.state.playlistTracks}/>
           </div>
         </div>
       </div>
