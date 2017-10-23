@@ -48,13 +48,11 @@ class App extends Component {
   }
 
   removeTrack(trackToRemove) {
-   const actualPlaylistTracks = this.state.playlistTracks;
-   actualPlaylistTracks.filter(track => {
-     if(track.id !== trackToRemove.id) {
-       return track;
-     }
-   })
-
+   let actualPlaylistTracks = this.state.playlistTracks;
+   actualPlaylistTracks = actualPlaylistTracks.filter(track => {
+     return track.id !== trackToRemove.id;
+   });
+   this.setState({playlistTracks : actualPlaylistTracks});
   }
 
   render() {
