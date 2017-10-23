@@ -11,11 +11,17 @@ import './Track.css';
   */
 
 class Track extends Component {
-  renderAaction() {
+
+  addTrack(this.props.track) {
+    this.props.onAdd(this.props.track);
+  }
+
+  renderAction() {
     if (this.props.isRemoval === true) {
       return '-';
     } else return '+';
   }
+
   render() {
     return (
       <div className="Track">
