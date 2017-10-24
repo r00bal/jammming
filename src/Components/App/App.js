@@ -11,22 +11,53 @@ class App extends Component {
     this.state = {
       searchResults: [
         {
+          id:'track1',
           name:'mezzanie',
           artist:'Massive Attack',
           album:'mezzanie'
         },
         {
+          id:'track2',
           name:'50cent',
           artist:'50cent',
           album:'50cent'
         },
         {
+          id:'track3',
           name:'fatboyslim',
           artist:'20syl',
           album:'flume'
         }
-      ]
+      ],
+      playlistName: 'playlistNameame',
+      playlistTracks: []
     };
+    this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
+    this.updatePlaylistName = this.updatePlaylistName.bind(this);
+  }
+
+  addTrack(track) {
+    const actualPlaylistTracks = this.state.playlistTracks;
+    const statment = actualPlaylistTracks.some(trackIsOnThePlaylist => track.id === trackIsOnThePlaylist.id);
+    if (!statment) {
+      actualPlaylistTracks.push(track);
+      this.setState({playlistTracks : actualPlaylistTracks})
+    } else {
+      console.log('already in the playlist')
+    }
+  }
+
+  removeTrack(trackToRemove) {
+   let actualPlaylistTracks = this.state.playlistTracks;
+   actualPlaylistTracks = actualPlaylistTracks.filter(track => {
+     return track.id !== trackToRemove.id;
+   });
+   this.setState({playlistTracks : actualPlaylistTracks});
+  }
+
+  updatePlaylistName(name) {
+    this.setState({playlistName:name});
   }
 
   render() {
@@ -36,8 +67,8 @@ class App extends Component {
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults}/>
-            <Playlist />
+            <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} isRemoval={true}/>
+            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} onNameChange={this.updatePlaylistName} isRemoval={false}/>
           </div>
         </div>
       </div>
