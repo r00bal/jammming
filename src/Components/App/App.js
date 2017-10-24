@@ -60,6 +60,10 @@ class App extends Component {
     this.setState({playlistName:name});
   }
 
+  savePlaylist() {
+    let trackURIs = this.playlistTracks;
+  }
+
   render() {
     return (
       <div>
