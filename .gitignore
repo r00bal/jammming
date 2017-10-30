@@ -16,6 +16,10 @@
 .env.test.local
 .env.production.local
 
+#secret
+src/util/Secret.js
+
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
