@@ -1,6 +1,6 @@
 import {Secret} from './Secret.js';
 
-let accessToken
+let accessToken;
 const CLIENT_ID = Secret.ID;
 const REDIRECT_URI = "http://localhost:3000/";
 
@@ -17,7 +17,7 @@ const REDIRECT_URI = "http://localhost:3000/";
     if (accessTokenMatch && expiresInMatch) {
         accessToken = accessTokenMatch[1];
         let expiresIn = expiresInMatch[1];
-        
+
         // Clear the parameters from the URL,
         // so the app doesn't try grabbing the access token after it has expired
         window.setTimeout(() => accessToken = '', expiresIn * 1000);
@@ -31,6 +31,34 @@ const REDIRECT_URI = "http://localhost:3000/";
         window.location = url;
         }
    }
+
+   search(term) {
+    console.log(accessToken);
+    const urlToFetch = `https://api.spotify.com/v1/search?type=track&q=${term}`;
+
+    return fetch(urlToFetch, {
+      headers: {Authorization: `Bearer ${accessToken}`}
+    }).then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Request failed!');
+    }, networkError => console.log(networkError.message)
+    ).then(jsonResponse => {
+      if (jsonResponse.tracks.items) {
+        return jsonResponse.tracks.items.map(track => {
+          console.log(track);
+          return {
+            ID: track.is,
+            Name: track.name,
+            Artist: track.artists[0].name,
+            Album: track.album.name,
+            URI: track.uri
+          }
+        })
+      }
+    })
+  }
  }
 
  export default Spotify;
