@@ -2,7 +2,7 @@ import {Secret} from './Secret.js';
 
 let accessToken;
 const CLIENT_ID = Secret.ID;
-const REDIRECT_URI = "http://localhost:3000/";
+const REDIRECT_URI = "https://r00bal-jammming.surge.sh";
 
 const Spotify = {
 
