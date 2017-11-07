@@ -103,7 +103,7 @@ const Spotify = {
         const request = this.request(urlToFetch,uris);
         return this.startFetch(request)
         .then(jsonResponse => {
-          console.log(jsonResponse);
+          return jsonResponse;
         });
       });
     });

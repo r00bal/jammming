@@ -46,18 +46,32 @@ class App extends Component {
   }
 
   savePlaylist() {
+    console.log('star saving');
     let tracksToSave = this.state.playlistTracks.map(track => track.uri);
     let playlistName = this.state.playlistName;
-    Spotify.savePlaylist(playlistName, tracksToSave);
-    this.setState({
-      playlistName: 'New Playlist',
-      playlistTracks : [],
-    });
+    Spotify.savePlaylist(playlistName, tracksToSave).then((resposne) => {
+      console.log('finish saving');
+      if (resposne.snapshot_id) {
+          console.log('Your song has been saved sucessfuly');
+      }
+
+      this.setState({
+        playlistName: 'New Playlist',
+        playlistTracks : [],
+      });
+    })
+
   }
 
   search(term) {
+    console.log('start loading');
     Spotify.search(term).then(searchResults => {
-      this.setState({searchResults : searchResults});
+      console.log('finish loading');
+      this.setState({searchResults : searchResults})
+      if (searchResults.length < 1) {
+        console.log(searchResults.length);
+        console.log('Could not found the song you are lookig for, please try with diffrent name');
+      };
     })
   }
 
