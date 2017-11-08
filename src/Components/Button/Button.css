@@ -13,3 +13,12 @@
 .Playlist-save:hover {
   background-color: rgba(108, 65, 233, .7);
 }
+
+.flashing {
+  animation: flash 1s linear infinite;
+}
+
+@keyframes flash {
+  0%, 100% {opacity:1;}
+  50% {opacity:0;}
+}

@@ -50,6 +50,7 @@ class App extends Component {
     let tracksToSave = this.state.playlistTracks.map(track => track.uri);
     let playlistName = this.state.playlistName;
     Spotify.savePlaylist(playlistName, tracksToSave).then((resposne) => {
+      console.log(resposne);
       console.log('finish saving');
       if (resposne.snapshot_id) {
           console.log('Your song has been saved sucessfuly');
