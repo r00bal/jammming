@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './SearchBar.css';
+import Button from '../Button/Button';
 
 
 class SearchBar extends Component {
@@ -23,7 +24,7 @@ class SearchBar extends Component {
     return (
       <div className="SearchBar">
         <input onChange={this.handleTermChange} placeholder="Enter A Song, Album, or Artist" />
-        <a onClick={this.search}>SEARCH</a>
+        <Button onSave={this.search} buttonName={'SEARCH'} />
       </div>
     );
   }
