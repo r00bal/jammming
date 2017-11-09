@@ -13,13 +13,16 @@ class App extends Component {
     this.state = {
       searchResults: [],
       playlistName: 'New Playlist',
-      playlistTracks: []
+      playlistTracks: [],
+      searchInProgress: false,
+      savingInProgress: false
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.savePlaylist = this.savePlaylist.bind(this);
     this.search = this.search.bind(this);
+    this.activePogressState = this.activePogressState.bind(this);
   }
 
   addTrack(track) {
@@ -45,16 +48,26 @@ class App extends Component {
     this.setState({playlistName:name});
   }
 
+  activePogressState(progress, active) {
+      this.setState({[progress]:active});
+  }
+
   savePlaylist() {
+    this.activePogressState('savingInProgress', true);
     console.log('star saving');
+
     let tracksToSave = this.state.playlistTracks.map(track => track.uri);
     let playlistName = this.state.playlistName;
     Spotify.savePlaylist(playlistName, tracksToSave).then((resposne) => {
       console.log(resposne);
-      console.log('finish saving');
+      ;
+
       if (resposne.snapshot_id) {
           console.log('Your song has been saved sucessfuly');
       }
+
+		  this.activePogressState('savingInProgress', false);
+
 
       this.setState({
         playlistName: 'New Playlist',
@@ -66,8 +79,11 @@ class App extends Component {
 
   search(term) {
     console.log('start loading');
+    this.activePogressState('searchInProgress', true);
     Spotify.search(term).then(searchResults => {
+
       console.log('finish loading');
+      this.activePogressState('searchInProgress', false);
       this.setState({searchResults : searchResults})
       if (searchResults.length < 1) {
         console.log(searchResults.length);
@@ -81,16 +97,20 @@ class App extends Component {
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
-          <SearchBar onSearch={this.search}/>
+          <SearchBar
+            onSearch={this.search}
+            active={this.state.searchInProgress}/>
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults}
               onAdd={this.addTrack}
               isRemoval={true}/>
-            <Playlist playlistName={this.state.playlistName}
-                      playlistTracks={this.state.playlistTracks}
-                      onRemove={this.removeTrack}
-                      onNameChange={this.updatePlaylistName}
-                      onSave={this.savePlaylist}/>
+            <Playlist
+              playlistName={this.state.playlistName}
+              playlistTracks={this.state.playlistTracks}
+              nRemove={this.removeTrack}
+              onNameChange={this.updatePlaylistName}
+              onSave={this.savePlaylist}
+              active={this.state.savingInProgress}/>
           </div>
         </div>
       </div>

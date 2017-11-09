@@ -1,5 +1,7 @@
 import {Secret} from './Secret.js';
 
+
+
 let accessToken;
 const CLIENT_ID = Secret.ID;
 const REDIRECT_URI = "http://localhost:3000";

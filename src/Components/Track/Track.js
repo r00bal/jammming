@@ -20,7 +20,6 @@ class Track extends Component {
 
   handleClick(e) {
     let plusOrMinus = e.target.innerText;
-    console.log(plusOrMinus);
     plusOrMinus === '+' ? this.addTrack() : this.removeTrack();
   }
   addTrack() {
