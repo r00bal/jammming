@@ -60,8 +60,6 @@ class App extends Component {
     let playlistName = this.state.playlistName;
     Spotify.savePlaylist(playlistName, tracksToSave).then((resposne) => {
       console.log(resposne);
-      ;
-
       if (resposne.snapshot_id) {
           console.log('Your song has been saved sucessfuly');
       }
