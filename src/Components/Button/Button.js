@@ -45,11 +45,9 @@ class Button extends Component {
 
 
   render() {
-    // this.state.isActive ? 'flashing' :
-    let className =  '';
     return (
         <a className='Playlist-save' onClick={this.handleClick}>
-          <span className={className}>
+          <span>
             {this.state.name}
           </span>
         </a>
