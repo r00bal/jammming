@@ -87,6 +87,9 @@ class App extends Component {
   }
 
   search(term) {
+    if (!term) {
+        this.showMessage('Please specify what we are looking for');
+    }
     this.activePogressState('searchInProgress', true);
     Spotify.search(term).then(searchResults => {
       this.activePogressState('searchInProgress', false);
