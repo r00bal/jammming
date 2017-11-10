@@ -1,0 +1,27 @@
+
+
+.Message-box {
+  position: relative;
+  margin: auto;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  padding: 40px;
+  z-index: 15;
+  background-color: #fff;
+  max-width: 37.5rem;
+  min-width: 25rem;
+}
+
+.Confirmation {
+  line-height: 36px;
+  height: 36px;
+  padding: 0px 20px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}

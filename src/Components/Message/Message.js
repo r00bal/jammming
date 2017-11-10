@@ -3,16 +3,11 @@ import './Message.css';
 
 
 class Message extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      message:''
-    };
-  }
+
   render() {
     return (
       <div className="Message-box">
-        <p className="Message-text">{this.state.message}</p>
+        <p className="Message-text">{this.props.message}</p>
         <a className="Confirmation">OK</a>
       </div>
     );
