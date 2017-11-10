@@ -27,7 +27,7 @@ class Track extends Component {
   }
 
   removeTrack() {
-    this.props.onRemove(this.props.track)
+    this.props.onRemove(this.props.track);
   }
 
   renderAction() {

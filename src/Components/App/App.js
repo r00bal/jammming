@@ -17,7 +17,7 @@ class App extends Component {
       playlistTracks: [],
       searchInProgress: false,
       savingInProgress: false,
-      message: 'Sample message'
+      message: ''
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
@@ -66,20 +66,18 @@ class App extends Component {
 
   savePlaylist() {
     this.activePogressState('savingInProgress', true);
-    console.log('star saving');
-
     let tracksToSave = this.state.playlistTracks.map(track => track.uri);
     let playlistName = this.state.playlistName;
+    if (tracksToSave)
     Spotify.savePlaylist(playlistName, tracksToSave).then((resposne) => {
       console.log(resposne);
+      if (typeof resposne === 'string') {
+        this.showMessage(resposne);
+      }
       if (resposne.snapshot_id) {
-          console.log('Your song has been saved sucessfuly');
           this.showMessage('Your song has been saved sucessfuly');
       }
-
 		  this.activePogressState('savingInProgress', false);
-
-
       this.setState({
         playlistName: 'New Playlist',
         playlistTracks : [],
@@ -89,27 +87,28 @@ class App extends Component {
   }
 
   search(term) {
-    console.log('start loading');
     this.activePogressState('searchInProgress', true);
     Spotify.search(term).then(searchResults => {
-
-      console.log('finish loading');
       this.activePogressState('searchInProgress', false);
       this.setState({searchResults : searchResults})
       if (searchResults.length < 1) {
         console.log(searchResults.length);
         this.showMessage('Could not found the song you are lookig for, please try with diffrent name');
-        console.log('Could not found the song you are lookig for, please try with diffrent name');
       };
     })
   }
 
   render() {
+    const messageText= this.state.message;
+    let message = null;
+    if (messageText) {
+      message = <Message
+        text={this.state.message}
+        resetMessage={this.resetMessage}/>
+    }
     return (
       <div>
-        <Message
-          text={this.state.message}
-          resetMessage={this.resetMessage}/>
+        {message}
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
           <SearchBar
@@ -122,7 +121,7 @@ class App extends Component {
             <Playlist
               playlistName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
-              nRemove={this.removeTrack}
+              onRemove={this.removeTrack}
               onNameChange={this.updatePlaylistName}
               onSave={this.savePlaylist}
               active={this.state.savingInProgress}/>

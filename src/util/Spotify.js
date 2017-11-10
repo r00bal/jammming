@@ -89,7 +89,7 @@ const Spotify = {
     let playlist_id = '';
 
     if (!name || !uris.length) {
-      return new Promise(resolve => resolve('you have to add tracks'));
+      return new Promise(resolve => resolve('Add tracks and provide name of the playlist first'));
     }
 
     const request = this.request('me');
