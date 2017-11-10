@@ -74,6 +74,7 @@ class App extends Component {
       console.log(resposne);
       if (resposne.snapshot_id) {
           console.log('Your song has been saved sucessfuly');
+          this.showMessage('Your song has been saved sucessfuly');
       }
 
 		  this.activePogressState('savingInProgress', false);
@@ -97,6 +98,7 @@ class App extends Component {
       this.setState({searchResults : searchResults})
       if (searchResults.length < 1) {
         console.log(searchResults.length);
+        this.showMessage('Could not found the song you are lookig for, please try with diffrent name');
         console.log('Could not found the song you are lookig for, please try with diffrent name');
       };
     })
@@ -105,7 +107,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Message text={this.state.message} resetMessage={this.resetMessage}/>
+        <Message
+          text={this.state.message}
+          resetMessage={this.resetMessage}/>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
           <SearchBar

@@ -9,7 +9,7 @@ class Message extends Component {
   }
 
   handleClick() {
-
+    this.props.resetMessage()
   }
 
   render() {
