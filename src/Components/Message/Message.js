@@ -3,12 +3,20 @@ import './Message.css';
 
 
 class Message extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+
+  }
 
   render() {
     return (
       <div className="Message-box">
-        <p className="Message-text">{this.props.message}</p>
-        <a className="Confirmation">OK</a>
+        <h3 className="Message-text">{this.props.text}</h3>
+        <a className="Confirmation" onClick={this.handleClick}>OK</a>
       </div>
     );
   }

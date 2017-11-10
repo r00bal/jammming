@@ -16,7 +16,8 @@ class App extends Component {
       playlistName: 'New Playlist',
       playlistTracks: [],
       searchInProgress: false,
-      savingInProgress: false
+      savingInProgress: false,
+      message: 'Sample message'
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
@@ -24,6 +25,8 @@ class App extends Component {
     this.savePlaylist = this.savePlaylist.bind(this);
     this.search = this.search.bind(this);
     this.activePogressState = this.activePogressState.bind(this);
+    this.resetMessage = this.resetMessage.bind(this);
+    this.showMessage = this.showMessage.bind(this);
   }
 
   addTrack(track) {
@@ -51,6 +54,14 @@ class App extends Component {
 
   activePogressState(progress, active) {
       this.setState({[progress]:active});
+  }
+
+  resetMessage() {
+    this.setState({message:''});
+  }
+
+  showMessage(message) {
+    this.setState({message:message});
   }
 
   savePlaylist() {
@@ -94,7 +105,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Message/>
+        <Message text={this.state.message} resetMessage={this.resetMessage}/>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
           <SearchBar

@@ -34,3 +34,7 @@
   text-transform: uppercase;
   white-space: nowrap;
 }
+.Message-text {
+ color: #6c41ec;
+ background-color: #fff;
+}
