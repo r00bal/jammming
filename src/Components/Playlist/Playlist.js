@@ -29,7 +29,7 @@ class Playlist extends Component {
         <Button
           onSave={this.props.onSave}
           buttonName={'Save to spotify'}
-          active={this.props.active}/>
+          isActive={this.props.isActive}/>
       </div>
     );
   }

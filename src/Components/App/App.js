@@ -75,7 +75,7 @@ class App extends Component {
         this.showMessage(resposne);
       }
       if (resposne.snapshot_id) {
-          this.showMessage('Your song has been saved sucessfuly');
+          this.showMessage('Your playlist has been saved sucessfuly');
       }
 		  this.activePogressState('savingInProgress', false);
       this.setState({
@@ -116,7 +116,7 @@ class App extends Component {
         <div className="App">
           <SearchBar
             onSearch={this.search}
-            active={this.state.searchInProgress}/>
+            isActive={this.state.searchInProgress}/>
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults}
               onAdd={this.addTrack}
@@ -127,7 +127,7 @@ class App extends Component {
               onRemove={this.removeTrack}
               onNameChange={this.updatePlaylistName}
               onSave={this.savePlaylist}
-              active={this.state.savingInProgress}/>
+              isActive={this.state.savingInProgress}/>
           </div>
         </div>
       </div>

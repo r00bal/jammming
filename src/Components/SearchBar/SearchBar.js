@@ -30,7 +30,7 @@ class SearchBar extends Component {
     return (
       <div className="SearchBar">
         <input onChange={this.handleTermChange} placeholder="Enter A Song, Album, or Artist" />
-        <Button onSave={this.search} buttonName={'SEARCH'} active={this.props.active}/>
+        <Button onSave={this.search} buttonName={'SEARCH'} isActive={this.props.isActive}/>
       </div>
     );
   }
